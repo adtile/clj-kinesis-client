@@ -5,7 +5,7 @@ A minimalistic Clojure wrapper for AWS Kinesis client.
 ## Usage
 
 ```clojure
-(use 'clj-kinesis-core)
+(use 'clj-kinesis-client.core)
 
 (let [client (create-client)]
   (put-records client "my-stream" ["event1" "event2"]))
