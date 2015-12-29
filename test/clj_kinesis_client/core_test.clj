@@ -1,5 +1,6 @@
 (ns clj-kinesis-client.core-test
   (:require [clojure.test :refer :all]
+            [clj-containment-matchers.clojure-test :refer :all]
             [clj-kinesis-client.core :refer :all]))
 
 (defonce client (create-client :endpoint "http://localhost:4567"))
@@ -16,6 +17,8 @@
 (deftest put-records-batch
   (delete-stream-if-found client "unit-test")
   (create-stream client "unit-test")
-  (testing "Succeeds"
-    (is (= (put-records client "unit-test" ["lol" "bal"])
-           {:failed-record-count 0}))))
+  (testing "returns failed count and succeeded records"
+    (is (equal? (put-records client "unit-test" ["lol" "bal"])
+                {:failed-record-count 0
+                 :records [{:sequence-number string? :shard-id "shardId-000000000000"}
+                           {:sequence-number string? :shard-id "shardId-000000000000"}]}))))

@@ -14,6 +14,12 @@
 
 (defn- uuid [] (str (UUID/randomUUID)))
 
+(defn- put-records-response->map [response]
+  {:failed-record-count (.getFailedRecordCount response)
+   :records (map (fn [r] {:sequence-number (.getSequenceNumber r)
+                          :shard-id (.getShardId r)})
+                 (.getRecords response))})
+
 (defn put-records [client stream-name events]
   (let [str->put-entry #(-> (PutRecordsRequestEntry.)
                             (.withData (ByteBuffer/wrap (.getBytes % "UTF-8")))
@@ -22,4 +28,4 @@
                     (.withStreamName stream-name)
                     (.withRecords (map str->put-entry events)))
         response (.putRecords client request)]
-    {:failed-record-count (.getFailedRecordCount response)}))
+    (put-records-response->map response)))
