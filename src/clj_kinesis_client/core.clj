@@ -12,7 +12,7 @@
     (when endpoint
       (.setEndpoint client endpoint))
     (when region
-      (.setRegion (Regions/fromName region)))
+      (.setRegion client (Regions/fromName region)))
     client))
 
 (defn- uuid [] (str (UUID/randomUUID)))
