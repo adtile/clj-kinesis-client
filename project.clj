@@ -1,4 +1,4 @@
-(defproject clj-kinesis-client "0.0.4"
+(defproject clj-kinesis-client "0.0.5"
   :description "Clojure AWS Kinesis client"
   :url "https://github.com/adtile/clj-kinesis-client"
   :license {:name "Eclipse Public License"
