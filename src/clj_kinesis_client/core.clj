@@ -2,14 +2,17 @@
   (:import [com.amazonaws.services.kinesis AmazonKinesisClient]
            [com.amazonaws.services.kinesis.model PutRecordsRequest PutRecordsRequestEntry]
            [com.amazonaws ClientConfiguration]
+           [com.amazonaws.regions Regions]
            [java.util UUID]
            [java.nio ByteBuffer]))
 
-(defn create-client [& {:keys [max-error-retry endpoint] :or {max-error-retry 1}}]
+(defn create-client [& {:keys [max-error-retry endpoint region] :or {max-error-retry 1}}]
   (let [configuration (.withMaxErrorRetry (ClientConfiguration.) max-error-retry)
         client (AmazonKinesisClient. configuration)]
     (when endpoint
       (.setEndpoint client endpoint))
+    (when region
+      (.setRegion (Regions/fromName region)))
     client))
 
 (defn- uuid [] (str (UUID/randomUUID)))
