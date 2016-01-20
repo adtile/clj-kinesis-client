@@ -11,9 +11,9 @@
         client (AmazonKinesisClient. configuration)]
     (when endpoint
       (.setEndpoint client endpoint))
-    (when region
-      (.setRegion client (Regions/fromName region)))
-    client))
+    (if region
+      (.withRegion client (Regions/fromName region))
+      client)))
 
 (defn- uuid [] (str (UUID/randomUUID)))
 
