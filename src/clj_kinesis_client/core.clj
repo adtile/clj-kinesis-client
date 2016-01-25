@@ -6,11 +6,12 @@
            [java.util UUID]
            [java.nio ByteBuffer]))
 
-(defn create-client [& {:keys [max-connections max-error-retry endpoint region]
-                        :or {max-connections 50 max-error-retry 1}}]
+(defn create-client [& {:keys [max-connections max-error-retry endpoint region tcp-keep-alive]
+                        :or {max-connections 50 max-error-retry 1 tcp-keep-alive false}}]
   (let [configuration (-> (ClientConfiguration.)
                           (.withMaxErrorRetry max-error-retry)
-                          (.withMaxConnections max-connections))
+                          (.withMaxConnections max-connections)
+                          (.withTcpKeepAlive tcp-keep-alive))
         client (AmazonKinesisClient. configuration)]
     (when endpoint
       (.setEndpoint client endpoint))
