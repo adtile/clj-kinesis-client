@@ -6,8 +6,11 @@
            [java.util UUID]
            [java.nio ByteBuffer]))
 
-(defn create-client [& {:keys [max-error-retry endpoint region] :or {max-error-retry 1}}]
-  (let [configuration (.withMaxErrorRetry (ClientConfiguration.) max-error-retry)
+(defn create-client [& {:keys [max-connections max-error-retry endpoint region]
+                        :or {max-connections 50 max-error-retry 1}}]
+  (let [configuration (-> (ClientConfiguration.)
+                          (.withMaxErrorRetry max-error-retry)
+                          (.withMaxConnections max-connections))
         client (AmazonKinesisClient. configuration)]
     (when endpoint
       (.setEndpoint client endpoint))
