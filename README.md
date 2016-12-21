@@ -1,5 +1,7 @@
 # clj-kinesis-client
 
+[![Build Status](https://travis-ci.org/adtile/clj-kinesis-client.svg?branch=master)](https://travis-ci.org/adtile/clj-kinesis-client)
+
 A minimalistic Clojure wrapper for AWS Kinesis client.
 
 ## Usage
