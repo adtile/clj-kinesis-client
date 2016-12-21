@@ -25,6 +25,6 @@ $ AWS_CBOR_DISABLE=1 lein test
 
 ## License
 
-Copyright © 2015 Adtile Technologies Inc.
+Copyright © 2016 Adtile Technologies Inc.
 
 Distributed under the Eclipse Public License version 1.0.
