@@ -11,10 +11,11 @@ env:
   global:
       - AWS_ACCESS_KEY_ID=xxxxxxxxxxxx
       - AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxx
+      - AWS_CBOR_DISABLE=1
 
 before_install:
   - docker pull adtile/kinesalite:latest
   - docker run -d -p 4567:4567 adtile/kinesalite:latest
 
 script:
-  - AWS_CBOR_DISABLE=1 lein test
+  - lein test
