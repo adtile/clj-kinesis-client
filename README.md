@@ -1,6 +1,7 @@
 # clj-kinesis-client
 
 [![Build Status](https://travis-ci.org/adtile/clj-kinesis-client.svg?branch=master)](https://travis-ci.org/adtile/clj-kinesis-client)
+[![Clojars Project](https://img.shields.io/clojars/v/clj-kinesis-client.svg)](https://clojars.org/clj-kinesis-client)
 
 A minimalistic Clojure wrapper for AWS Kinesis client.
 
@@ -18,7 +19,8 @@ A minimalistic Clojure wrapper for AWS Kinesis client.
 ```sh
 $ npm install -g kinesalite
 $ kinesalite
-$ lein test
+# Disable CBOR https://github.com/mhart/kinesalite#cbor-protocol-issues-with-the-java-sdk
+$ AWS_CBOR_DISABLE=1 lein test
 ```
 
 ## License
