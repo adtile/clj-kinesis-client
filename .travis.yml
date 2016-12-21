@@ -7,6 +7,11 @@ jdk:
 services:
   - docker
 
+env:
+  global:
+      - AWS_ACCESS_KEY_ID=xxxxxxxxxxxx
+      - AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxx
+
 before_install:
   - docker pull adtile/kinesalite:latest
   - docker run -d -p 4567:4567 adtile/kinesalite:latest
