@@ -17,8 +17,7 @@ A minimalistic Clojure wrapper for AWS Kinesis client.
 ## Development
 
 ```sh
-$ npm install -g kinesalite
-$ kinesalite
+$ docker-compose up -d
 # Disable CBOR https://github.com/mhart/kinesalite#cbor-protocol-issues-with-the-java-sdk
 $ AWS_CBOR_DISABLE=1 lein test
 ```
