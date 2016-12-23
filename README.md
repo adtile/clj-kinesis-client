@@ -12,13 +12,16 @@ A minimalistic Clojure wrapper for AWS Kinesis client.
 
 (let [client (create-client)]
   (put-records client "my-stream" ["event1" "event2"]))
+
+(let [client (create-client)]
+  (put-record client "my-stream" "event2"))
+
 ```
 
 ## Development
 
 ```sh
-$ npm install -g kinesalite
-$ kinesalite
+$ docker-compose up -d
 # Disable CBOR https://github.com/mhart/kinesalite#cbor-protocol-issues-with-the-java-sdk
 $ AWS_CBOR_DISABLE=1 lein test
 ```

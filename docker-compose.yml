@@ -1,0 +1,7 @@
+version: "2"
+services:
+    kinesis:
+        image: adtile/kinesalite:latest
+        container_name: kinesis
+        ports:
+          - 4567:4567

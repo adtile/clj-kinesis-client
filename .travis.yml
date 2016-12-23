@@ -14,8 +14,7 @@ env:
       - AWS_CBOR_DISABLE=1
 
 before_install:
-  - docker pull adtile/kinesalite:latest
-  - docker run -d -p 4567:4567 adtile/kinesalite:latest
+  - docker-compose up -d
 
 script:
   - lein test
