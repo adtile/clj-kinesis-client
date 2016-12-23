@@ -38,3 +38,9 @@
                 {:failed-record-count 0
                  :records [{:sequence-number string? :shard-id "shardId-000000000000"}
                            {:sequence-number string? :shard-id "shardId-000000000000"}]}))))
+
+(deftest put-one-record
+  (testing "returns succeeded record"
+    (is (equal? (put-record client test-stream-name "lolbal")
+                {:sequence-number string? :shard-id "shardId-000000000000"}))))
+

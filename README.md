@@ -12,6 +12,10 @@ A minimalistic Clojure wrapper for AWS Kinesis client.
 
 (let [client (create-client)]
   (put-records client "my-stream" ["event1" "event2"]))
+
+(let [client (create-client)]
+  (put-record client "my-stream" "event2"))
+
 ```
 
 ## Development
